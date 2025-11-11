@@ -3,7 +3,7 @@
     
 ## Sample Usage
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add an int main(){}. Some more details are below.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add `int main(){}`. Some more details are below.
 
 
 ### Functions
