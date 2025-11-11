@@ -1,5 +1,5 @@
 # MathFunction
-<p align = "left"><img src="mathfn4.png" alt="mathfnsample" width=1000>
+<p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
     
 ## Sample Usage
 
