@@ -1,9 +1,9 @@
 # MathFunction
-<p align = "left"><img src="mathfn4.png" alt="mathfnsample" width=1000>
+<p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
     
 ## Sample Usage
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add `int main()`. Some more details are below.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add an int main(){}. Some more details are below.
 
 
 ### Functions
@@ -36,7 +36,12 @@ To define a multivariable function
   
     f(x,y,z,t) = cos(2*x + 2*y) / ln((z^2) * t);
 
-Calling `f(x,y,z,t)` sets the variables of $f$. Plugging numbers into this function again returns a `long double`
+Calling `f(x,y,z,t)` sets the variables of $f$. This could also be done in two lines
+
+    f = u * v / w;
+    f(u,v,w);
+    
+ Plugging numbers into this function again returns a `long double`
   
     cout << f(-2.5, 3, 4, 65);
 
@@ -85,7 +90,7 @@ Various operators can be used.
     mathFn Q = F / cos(t);   // divides each component of F by cos(t)
 
 
- For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, $I$ automatically has its variables set to those of $G$, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with mathFn's, any combination of numbers/functions/variables can be plugged into a vecMathFn. 
+ For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, $J$ automatically has its variables set to those of $G$, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with mathFn's, any combination of numbers/functions/variables can be plugged into a vecMathFn. 
 
     mathFn p1 = z^2 / 4
     mathFn p2 = x*y*z - t;
@@ -142,7 +147,7 @@ Functions can be used with `cout`
 
 ### `setEvaluator()`
 
-There is a global "default" variable list. Suppose you are only working with functions of the variables $x,y,z$. Rather then setting all their variables individually, call `setEvaluator(x,y,z)`; any function without its variables set will automatically use $x$, $y$, and $z$. Any function that has its variables set can still be called as usual
+There is a global "default" variable list. Suppose you are working with many functions of the variables $x,y,z$. Rather then setting all their variables individually, call `setEvaluator(x,y,z)`; any function without its variables set will automatically use $x$, $y$, and $z$. Any function that has its variables set can still be called as usual
 
     mathFn f, g, h;
     f = x*y*z;
@@ -173,7 +178,7 @@ If $f$ has already had its variables set, calling `f()` will clear its variables
                                            else if(x > 0){     return 1;}
                                            return 0;}
 
-  The outputs of these functions could for example depend on other parts of the program. Then mathFn's can be defined
+  The outputs of these functions could for example depend on other parts of the program. Then define
 
     cppMathFn stp(step, "step");
     cppMathFn sgn(sign, "sgn"); 
@@ -215,7 +220,7 @@ If $x,y,z$ are variables, then mathematically, the expression $f(x,y,z)$ could r
   There are #define lines that hijack the names of many of the standard cmath functions (`sin`, `cos`, `exp`, etc.), and `x`, `y`, `z`, `t`, `s`, `u`, `v`, `w` are defined as variables. Any of these lines can be deleted without affecting the rest of the code, to recover access to the original functions/names.
 
   ## Future versions
-  Ideally, future versions will have derivatives, and will allow various data types for numbers, including arbitrary precision.
+  Ideally, future versions will have `mathFn::differentiate()`, and will allow various data types for numbers, including arbitrary precision.
   
 
 
