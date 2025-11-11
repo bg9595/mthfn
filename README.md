@@ -1,9 +1,9 @@
 # MathFunction
-<p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
+<p align = "left"><img src="mathfn4.png" alt="mathfnsample" width=1000>
     
 ## Sample Usage
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Some more details are below.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add `int main()`. Some more details are below.
 
 
 ### Functions
@@ -217,7 +217,6 @@ If $x,y,z$ are variables, then mathematically, the expression $f(x,y,z)$ could r
   ## Future versions
   Ideally, future versions will have derivatives, and will allow various data types for numbers, including arbitrary precision.
   
-
 
 
 
