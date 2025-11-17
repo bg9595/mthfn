@@ -1,9 +1,20 @@
 # MathFunction
 <p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
     
-## Sample Usage
+## Usage Guide
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download mathfn.cpp and add `int main(){}`. Some more details are below.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed.
+
+
+**C++ Novices:** Just download `mathFunction.cpp`. There are some examples in `int main(){}`, which can be replaced with your code; compile as usual.
+
+**General Use:** There is one header file `mathFunction.h`, and 6 cpp files `mathFn.cpp`, `var.cpp`, `cppMathFn.cpp`, `vecNum.cpp`, `vecMathFn.cpp`, `misc.cpp`. These can be installed using the cmake file. 
+
+    mkdir 
+
+(The file mathFunction.cpp is just these 7 files all pasted into one file, along with an int main()).
+    
+
 
 
 ### Functions
