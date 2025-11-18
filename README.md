@@ -1,20 +1,22 @@
 # MathFunction
 <p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
-    
-## Usage Guide
 
 MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed.
-
-
-**C++ Novices:** Just download `mathFunction.cpp`. There are some examples in `int main(){}`, which can be replaced with your code; compile as usual.
-
-**General Use:** There is one header file `mathFunction.h`, and 6 cpp files `mathFn.cpp`, `var.cpp`, `cppMathFn.cpp`, `vecNum.cpp`, `vecMathFn.cpp`, `misc.cpp`. These can be installed using the cmake file. 
-
-    mkdir 
-
-(The file mathFunction.cpp is just these 7 files all pasted into one file, along with an int main()).
     
 
+
+
+
+
+**C++ Novices:** Download `mathFunction.cpp`. There are some examples in `int main(){}`; replace with your code and compile as usual.
+
+
+
+
+
+    
+
+## Usage Guide
 
 
 ### Functions
@@ -22,7 +24,7 @@ To define a polynomial
 
     mathFn f = 3*(x^2) + x;         
     
-  Parentheses typically must be used with $\textasciicircum$ since this operator has low precedence. Functions can be combined using `+`, `-`, `/`, `*`, `^`, and `()`
+  Parentheses typically must be used with `^` since this operator has low precedence. Functions can be combined using `+`, `-`, `/`, `*`, `^`, and `()`
   
     mathFn g = sin(cos(x));
 
@@ -226,13 +228,25 @@ If $x,y,z$ are variables, then mathematically, the expression $f(x,y,z)$ could r
     g(x,y,z) = f(x, (mathFn) y, z);    // the left side sets the variables of g to x,y,z; the right side plugs x,y,z into f
 
 
+### Namespaces
 
-  ## Notes
-  There are #define lines that hijack the names of many of the standard cmath functions (`sin`, `cos`, `exp`, etc.), and `x`, `y`, `z`, `t`, `s`, `u`, `v`, `w` are defined as variables. Any of these lines can be deleted without affecting the rest of the code, to recover access to the original functions/names.
+All classes and variables are contained in the `mathFunction` namespace. The following names conflict with the `std` namespace: `sin`, `cos`, `tan`, `exp`, `sqrt`, `abs`.
 
-  ## Future versions
-  Ideally, future versions will have `mathFn::differentiate()`, and will allow various data types for numbers, including arbitrary precision.
-  
+
+## Installation
+
+There is a cmake file.
+
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+    cmake --install . --prefix ..
+    
+
+## Future versions
+Ideally, future versions will have `mathFn::differentiate()`, and will allow various data types for numbers, including arbitrary precision.
+
 
 
 
