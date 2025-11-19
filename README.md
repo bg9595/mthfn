@@ -1,14 +1,8 @@
 # MathFunction
 <p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download `mathFunction.cpp` to your working directory and use `#include "mathFunction.cpp"`. Alternatively download `mathFunctionExamples.cpp`, which has `int main(){}` and some examples, and can be compiled.
     
-
-
-
-
-
-**C++ Novices:** Download `mathFunction.cpp`. There are some examples in `int main(){}`; replace with your code and compile as usual.
 
 
 
@@ -233,19 +227,8 @@ If $x,y,z$ are variables, then mathematically, the expression $f(x,y,z)$ could r
 All classes and variables are contained in the `mathFunction` namespace. The following names conflict with the `std` namespace: `sin`, `cos`, `tan`, `exp`, `sqrt`, `abs`.
 
 
-## Installation
-
-There is a cmake file.
-
-    mkdir build
-    cd build
-    cmake ..
-    cmake --build .
-    cmake --install . --prefix ..
-    
-
 ## Future versions
-Ideally, future versions will have `mathFn::differentiate()`, and will allow various data types for numbers, including arbitrary precision.
+Plans for future versions include `.differentiate()` functions, and various data types for numbers, including arbitrary precision.
 
 
 
