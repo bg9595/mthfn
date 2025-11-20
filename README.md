@@ -1,7 +1,9 @@
 # MathFunction
 <p align = "left"><img src="mathfn.png" alt="mathfnsample" width=1000>
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download `mathFunction.cpp` to your working directory and use `#include "mathFunction.cpp"`. Alternatively download `mathFunctionExamples.cpp`, which has `int main(){}` and some examples, and can be compiled.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download `mathFunction.cpp` to your working directory and use `#include "mathFunction.cpp"`, and if desired `using namespace mathFunction`.
+
+Alternatively, download `mathFunctionExamples.cpp`, which has `int main(){}` and some examples, and can be compiled on its own.
     
 
 
