@@ -3,7 +3,7 @@
 
 MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed.
 
-For C++ novices: put `mathFunction.cpp` in your working directory and use `#include "mathFunction.h"`, and if desired `using namespace mathFunction`. Some examples can be found in `examples.cpp`. Separate header and source files are in `/mathFunction/src/` (these are `/mathFunction/mathFunction.cpp` split up into two files).
+Put `/mathFunction/mathFunction.h` in your working directory and use `#include "mathFunction.h"`, and if desired `using namespace mathFunction`. Some examples can be found in `examples.cpp`. Separate header and source files are in `/mathFunction/src/` (the 2 files in that directory are the file `/mathFunction/mathFunction.h` split up into two).
     
 
 
