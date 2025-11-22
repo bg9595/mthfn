@@ -1,9 +1,9 @@
 # MathFunction
-<p align = "left"><img src="mathFunction.png" alt="mathfnsample" width=1000>
+<p align = "left"><img src="header.png" alt="mathfnsample" width=1000>
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download `mathFunction.cpp` to your working directory and use `#include "mathFunction.cpp"`, and if desired `using namespace mathFunction`.
 
-Put `/mathFunction/mathFunction.h` in your working directory and use `#include "mathFunction.h"`, and if desired `using namespace mathFunction`. Some examples can be found in `examples.cpp`. Separate header and source files are in `/mathFunction/src/` (the 2 files in that directory are the file `/mathFunction/mathFunction.h` split up into two).
+Alternatively, download `mathFunctionExamples.cpp`, which has `int main(){}` and some examples, and can be compiled on its own.
     
 
 
