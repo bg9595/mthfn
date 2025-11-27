@@ -1,11 +1,11 @@
 # MathFunction
 <p align = "left"><img src="header.png" alt="mathfnsample" width=1000>
 
-MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download `mathFunction.cpp` to your working directory and use `#include "mathFunction.cpp"`, and if desired `using namespace mathFunction`.
+MathFunction is written with ease of use in mind, and the few lines above explain most of what is needed. Download **mathFunction.h** to your working directory and use `#include "mathFunction.cpp"`, and if desired `using namespace mathFunction`. The file **examples.cpp** has some examples and can be compiled.
 
-Alternatively, download `mathFunctionExamples.cpp`, which has `int main(){}` and some examples, and can be compiled on its own.
-    
+Requires C++20. To compile, use eg.
 
+    g++ -std=c++20 examples.cpp
 
 
 
@@ -13,6 +13,10 @@ Alternatively, download `mathFunctionExamples.cpp`, which has `int main(){}` and
     
 
 ## Usage Guide
+
+First define a variable
+
+    var x("x");
 
 
 ### Functions
@@ -24,7 +28,7 @@ To define a polynomial
   
     mathFn g = sin(cos(x));
 
-  The $x$ is optional since this is a single variable function; `sin(cos)` would also work. Some other examples
+  The `(x)` is optional since this is a single variable function; `sin(cos)` would also work. Some other examples
   
     mathFn h = -g(sin(x) + g/f) - 3;
 
@@ -37,18 +41,20 @@ To define a polynomial
     cout <<     f(2)                  << endl << 
                 g(.5)                 << endl <<
                 h(7)                  << endl;
-These return a `long double`.
+These return a `long double`. The class `var` derives from `mathFn`.
 
   ### Multivariable functions
 
 To define a multivariable function
-  
+
+    var y("y"), var z("z"), var t("t");
+    
     f(x,y,z,t) = cos(2*x + 2*y) / ln((z^2) * t);
 
 Calling `f(x,y,z,t)` sets the variables of $f$. This could also be done in two lines
 
-    f = u * v / w;
-    f(u,v,w);
+    f = cos(2*x + 2*y) / ln((z^2) * t);
+    f(x,y,z,t);
     
  Plugging numbers into this function again returns a `long double`
   
@@ -76,7 +82,7 @@ Functions with any numbers of components can be defined
     H(x,y,z) = {3, x*y, ln(z)};
     I(u,v) = {u^2, v^2, u + v, u - v};
 
-Plugging in numbers returns a `vecNum`, which derives from `vector <long double>`, and can be used with `cout`
+Plugging in numbers returns an object of class `vecNum`, which derives from `vector <long double>`, and can be used with `cout`
 
     cout << G(3.4, 2, -4, 10);
 
@@ -99,7 +105,7 @@ Various operators can be used.
     mathFn Q = F / cos(t);   // divides each component of F by cos(t)
 
 
- For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, $J$ automatically has its variables set to those of $G$, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with mathFn's, any combination of numbers/functions/variables can be plugged into a vecMathFn. 
+ For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, `J` automatically has its variables set to those of `G`, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with mathFn's, any combination of numbers/functions/variables can be plugged into a vecMathFn. 
 
     mathFn p1 = z^2 / 4
     mathFn p2 = x*y*z - t;
@@ -114,19 +120,6 @@ The class `vecMathFn` derives from `vector <mathFn>`, so component functions can
 
 
 
-### Variables
-
-To define more variables
-
-    var a, b, theta;
-
-If the print functions below are going to be used
-
-    var c("c");
-    var phi("phi");
-
-The class `var` derives from `mathFn`.
-
 
 
 
@@ -138,7 +131,7 @@ Printing works as follows
     f = cos(sin(x));
     G = {cos(x), sin(x), x};
     
-    f.print();        // returns the string "3 * x^2 + x"
+    f.print();        // returns the string "cos(sin(x))"
     G.print();        // returns the string "(cos(x), sin(x), x)"
 
 Functions can be used with `cout`
@@ -198,7 +191,7 @@ If $f$ has already had its variables set, calling `f()` will clear its variables
 
     cout << f(3);
     
-Any of the cmath functions can be used like this
+Many of the `<cmath>` functions have been used like this
 
     mathFn arccos(acos, "arccos");
     f = sin(arccos(x));
@@ -219,9 +212,10 @@ If $x,y,z$ are variables, then mathematically, the expression $f(x,y,z)$ could r
 (For example, in the second case, $f$ might be a function of $u,v,w$; plugging in $x,y,z$ amounts to replacing one set of variables with the other.) By default, mathFunction interprets `f(x,y,z)` in the first way, as in the numerous examples above. To accomplish the second, cast at least one of the variables to `mathFn`
 
 
-    f(u,v,w) = cos(u * v) + w
+    f(u,v,w) = cos(u * v) + w;
     
     g(x,y,z) = f(x, (mathFn) y, z);    // the left side sets the variables of g to x,y,z; the right side plugs x,y,z into f
+                                       // the result is that g = cos(x * y) + z, and g has its variables set to x,y,z
 
 
 ### Namespaces
