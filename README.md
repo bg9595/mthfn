@@ -139,7 +139,7 @@ Printing works as follows
 
 Functions can be used with `cout`
 
-    cout << f;         // prints "3 * x^2 + x"   
+    cout << f;         // prints "cos(sin(x))"   
     cout << G;         // prints "(cos(x), sin(x), x)"
 
 
