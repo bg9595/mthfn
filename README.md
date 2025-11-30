@@ -34,7 +34,7 @@ To define a polynomial
 
     g = 2*g;
 
-    mathFn k = x^(x^2)
+    mathFn k = x^(x^2);
 
   To plug numbers into these functions
 
@@ -47,7 +47,7 @@ These return a `long double`. The class `var` derives from `mathFn`.
 
 To define a multivariable function
 
-    var y("y"), var z("z"), var t("t");
+    var y("y"), z("z"), t("t");
     
     f(x,y,z,t) = cos(2*x + 2*y) / ln((z^2) * t);
 
@@ -61,9 +61,11 @@ Calling `f(x,y,z,t)` sets the variables of $f$. This could also be done in two l
     cout << f(-2.5, 3, 4, 65);
 
 Any combination of functions/numbers/variables can be plugged into functions
+
+    mathFn g1, g2;
     
-    mathFn g1 = z^2;
-    mathFn g2 = 3*z - cos(y);
+    g1 = z^2;
+    g2 = 3*z - cos(y);
 
     h(x,y,z) = f(g1, g2, z, 4);
 
@@ -76,6 +78,7 @@ which returns a `mathFn` unless all the arguments are numbers. Plugging things i
 Functions with any numbers of components can be defined
 
     vecMathFn F, G, H, I;
+    var u("u"), v("v"), w("w");
         
     F(x,y,z) = {cos(x * y), z - y, x*y*z};
     G(u,v,w,t) = {u*v, exp(u - v) * t, v^2 / w};
@@ -100,14 +103,14 @@ Various operators can be used.
 
     N = F % H;               // cross product
 
-    mathFn P = cos(t) * F;   // multiplies each component of F by cos(t)
+    vecMathFn P = cos(t) * F;   // multiplies each component of F by cos(t)
 
-    mathFn Q = F / cos(t);   // divides each component of F by cos(t)
+    vecMathFn Q = F / cos(t);   // divides each component of F by cos(t)
 
 
- For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, `J` automatically has its variables set to those of `G`, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with mathFn's, any combination of numbers/functions/variables can be plugged into a vecMathFn. 
+ For any of these operators, the dimension and number variables of each of the two functions should make mathematical sense. For the composition, `J` automatically has its variables set to those of `G`, but the others still need their variables set (this could have been done in one line for each function, eg. `m(x,y,z) = F*H`). As with `mathFn`, any combination of numbers/functions/variables can be plugged into a `vecMathFn`. 
 
-    mathFn p1 = z^2 / 4
+    mathFn p1 = z^2 / 4;
     mathFn p2 = x*y*z - t;
 
     vecMathFn R = G(p1, p2, w, 4);
@@ -115,7 +118,7 @@ Various operators can be used.
  
 The class `vecMathFn` derives from `vector <mathFn>`, so component functions can be accessed with `[]`
 
-    F[0];  // returns cos(x * y)
+    cout << F[0];  // prints cos(x * y);
 
 
 
@@ -151,12 +154,12 @@ Functions can be used with `cout`
 
 There is a global "default" variable list. Suppose you are working with many functions of the variables $x,y,z$. Rather then setting all their variables individually, call `setEvaluator(x,y,z)`; any function without its variables set will automatically use $x$, $y$, and $z$. Any function that has its variables set can still be called as usual
 
-    mathFn f, g, h;
     f = x*y*z;
-    g = 3x^2 + cos(y);
+    g = 3*x^2 + cos(y);
     h = 2*z;   
 
-    mathFn k;
+    var s("s");
+
     k(s,t) = cos(2*t) * s;
 
     setEvaluator(x,y,z);
@@ -172,9 +175,9 @@ If $f$ has already had its variables set, calling `f()` will clear its variables
 
 ### Custom functions
 
-  Define any C++ function you like that takes a number and returns a number, for example
+  Define any C++ function you like that takes a number and returns a number. For example, these are defined in the header
 
-    long double step(long double x){       return  x < 0  ?  0  :  1;}
+    long double stp(long double x){       return  x < 0  ?  0  :  1;}
     
     long double sign(long double x){       if(x < 0){          return -1;}
                                            else if(x > 0){     return 1;}
@@ -182,21 +185,21 @@ If $f$ has already had its variables set, calling `f()` will clear its variables
 
   The outputs of these functions could for example depend on other parts of the program. Then define
 
-    cppMathFn stp(step, "step");
+    cppMathFn step(stp, "step");
     cppMathFn sgn(sign, "sgn"); 
 
-  `cppMathFn` derives from `mathFn`. Now `stp` and `sgn` can be used as above.    
+  `cppMathFn` derives from `mathFn`. Now `step` and `sgn` can be used as above.    
 
-    f = sin(stp(x)) + sgn(cos(x));
+    f = sin(step(x)) + sgn(cos(x));
 
     cout << f(3);
     
 Many of the `<cmath>` functions have been used like this
 
-    mathFn arccos(acos, "arccos");
+    cppMathFn arccos(acos, "arccos");
     f = sin(arccos(x));
 
-
+Again, all of these are already defined in the header.
 
 
 
